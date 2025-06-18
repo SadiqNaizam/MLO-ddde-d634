@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from "tailwindcss/defaultTheme"; // Import defaultTheme
 
 export default {
 	darkMode: ["class"],
@@ -65,8 +66,11 @@ export default {
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+				md: 'calc(var(--radius) - 2px)', /* Will now be 4px if radius is 6px */
+				sm: 'calc(var(--radius) - 4px)'  /* Will now be 2px if radius is 6px */
+			},
+			fontFamily: { // Added fontFamily customization
+				sans: ['var(--font-sans)', ...defaultTheme.fontFamily.sans],
 			},
 			keyframes: {
 				'accordion-down': {
